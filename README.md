@@ -1,4 +1,4 @@
-# Post-Training Quantization for Large Language Models: A Comprehensive Survey
+# Post-Training Quantization for Large Language Models: A Survey
 
 Methods, component sensitivity, calibration, and deployment
 
@@ -559,7 +559,7 @@ Cite the survey using the manuscript record below until the authors provide conf
 
 ```bibtex
 @misc{rababah2026posttrainingquantization,
-  title  = {Post-Training Quantization for Large Language Models: A Comprehensive Survey},
+  title  = {Post-Training Quantization for Large Language Models: A Survey},
   author = {Baha Rababah and Yuzhang Shang and Carson K. Leung and Cuneyt G. Akcora and Mubarak Shah},
   year   = {2026},
   note   = {Manuscript}
