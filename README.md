@@ -6,7 +6,7 @@ Methods, component sensitivity, calibration, and deployment
 
 [Baha Rababah](mailto:rababahb@myumanitoba.ca), [Yuzhang Shang](mailto:yuzhang.shang@ucf.edu), [Carson K. Leung](mailto:carson.leung@umanitoba.ca), [Cuneyt G. Akcora](mailto:cuneyt.akcora@ucf.edu), and [Mubarak Shah](mailto:mubarak.shah@ucf.edu)
 
-University of Manitoba and University of Central Florida. Author order and affiliations follow the [supplied manuscript](paper/survey.pdf#page=1).
+University of Manitoba and University of Central Florida. 
 
 This repository accompanies the survey and organizes its literature around one question: How does each method control quantization error? It connects the methods to the transformer components they affect, the calibration information they use, and the numerical formats and kernels required for deployment. The catalog contains 52 method entries from Section 3 and an index of all 108 references in the manuscript.
 
