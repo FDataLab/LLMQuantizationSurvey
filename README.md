@@ -321,7 +321,7 @@ Figure 7, page 22. The numbered sites distinguish outliers after normalization, 
 | Normalization and residual paths | These operations influence the inputs and states used by many large projections. | Their small parameter count does not make them harmless targets. Record retained precision and fused transformations. |
 | Embeddings, language-model head, and logits | The output path interacts directly with vocabulary probabilities. | Record exceptions in the final projection and evaluate generation behavior under the actual output configuration. |
 
-The cache asymmetry is developed in [KIVI](https://proceedings.mlr.press/v235/liu24bz.html) · [52](assets/references.md#ref-52). The source does not provide a controlled component ablation across all 52 catalog methods, so this map is a synthesis of sensitivity mechanisms, not a ranking of every component for every model.
+The cache asymmetry is developed in [KIVI](https://proceedings.mlr.press/v235/liu24bz.html) · [52](assets/references.md#ref-52). 
 
 <a id="calibration"></a>
 ## Calibration strategies
@@ -343,9 +343,8 @@ For a linear layer, reconstruction can compare $XW$ and $X\widetilde W$. A trans
 
 ### Calibration data and information source
 
-The survey warns that short generic text can fail to represent long prompts, dialogue, code, mathematics, or reasoning-heavy use cases. Calibration data should be described separately from the held-out data used to evaluate the quantized model. A larger sample count does not by itself demonstrate that the relevant activation patterns were covered. See [Sections 5.5–5.6](assets/survey.pdf#page=26).
+In calibration, short generic text can fail to represent long prompts, dialogue, code, mathematics, or reasoning-heavy use cases. Calibration data should be described separately from the held-out data used to evaluate the quantized model. A larger sample count does not by itself demonstrate that the relevant activation patterns were covered. See [Sections 5.5–5.6](assets/survey.pdf#page=26).
 
-The supplied Table 6 and Section 5.6 use “zero-shot” differently. This README therefore names the information source explicitly: real unlabeled text, model-generated sequences, or parameter-only statistics. This is an editorial reporting convention; it does not settle the manuscript’s inconsistent terminology. The original wording and proposed revision are in the [source notes](docs/source-notes.md#calibration-terminology).
 
 | Paper or resource | Year in survey | Role in the survey |
 | --- | --- | --- |
@@ -415,7 +414,7 @@ Mixture-of-experts models add routing decisions and uneven expert coverage durin
 
 ### New inference workloads
 
-The workload section concerns long contexts, long reasoning generations, test-time scaling, and repeated model calls in agentic tasks. The survey asks whether the quantized model preserves behavior across the complete generation or interaction process. Cache reuse, generation length, tool arguments, retained constraints, and recovery after errors require evaluation beyond short static prompts.
+The workload section concerns long contexts, long reasoning generations, test-time scaling, and repeated model calls in agentic tasks. We ask whether the quantized model preserves behavior across the complete generation or interaction process. Cache reuse, generation length, tool arguments, retained constraints, and recovery after errors require evaluation beyond short static prompts.
 
 | Paper or resource | Year in survey | Role in the survey |
 | --- | --- | --- |
@@ -431,7 +430,7 @@ The workload section concerns long contexts, long reasoning generations, test-ti
 
 ### Reliability, process, and open science
 
-The source argues that accuracy and perplexity can miss changes in model behavior. It includes safety, fairness, factual recall, explanation quality, the interaction between quantization and adaptation, and reproducible cost measurement. The research agenda is to specify which behaviors are preserved and to test them under a documented quantization and deployment configuration.
+We argue that accuracy and perplexity can miss changes in model behavior. We include safety, fairness, factual recall, explanation quality, the interaction between quantization and adaptation, and reproducible cost measurement. The research agenda is to specify which behaviors are preserved and to test them under a documented quantization and deployment configuration.
 
 | Paper or resource | Year in survey | Role in the survey |
 | --- | --- | --- |
@@ -448,7 +447,7 @@ The source argues that accuracy and perplexity can miss changes in model behavio
 <a id="evaluation"></a>
 ## Evaluation and reported evidence
 
-The survey draws evidence from studies with different models, quantized tensors, calibration procedures, precision exceptions, and hardware. This repository does not combine their numbers into a leaderboard. [Reported results](docs/reported-results.md) records selected quantitative examples with the settings stated in the manuscript; all such results remain attributed to their original studies.
+The survey draws evidence from studies with different models, quantized tensors, calibration procedures, precision exceptions, and hardware. 
 
 | Paper or resource | Year in survey | Role in the survey |
 | --- | --- | --- |
@@ -483,7 +482,7 @@ WikiText-2, C4, and Penn Treebank occur in the manuscript’s perplexity example
 <a id="implementations"></a>
 ## Libraries and implementations
 
-The following systems and toolkits are explicitly cited in the survey. 
+The following systems and toolkits are cited in the survey. 
 | Resource | Project | Role in the source |
 | --- | --- | --- |
 | Marlin [21](assets/references.md#ref-21) | [IST-DASLab/marlin](https://github.com/IST-DASLab/marlin) | Kernel-level support for low-bit weight inference. |
@@ -492,8 +491,7 @@ The following systems and toolkits are explicitly cited in the survey.
 | bitsandbytes / LLM.int8() [13](assets/references.md#ref-13) | [bitsandbytes-foundation/bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes) | Implementation associated with mixed-precision 8-bit matrix multiplication. |
 | LLMC [27](assets/references.md#ref-27) | [ModelTC/LightCompress](https://github.com/ModelTC/LightCompress) | Compression toolkit and benchmarking resource. |
 
-This companion has no model installation or inference command because no executable quantization code was supplied for it. Reproduction starts from the linked authors’ implementation and the exact settings of the target paper. The local validation tool checks only this repository’s documents, figures, and indexes.
-
+ 
 <a id="related-surveys"></a>
 ## Related surveys and background
 
@@ -528,13 +526,11 @@ This companion has no model installation or inference command because no executa
 | [CITATION.bib](CITATION.bib) | A conservative manuscript citation. |
 | [tools/validate_repository.py](tools/validate_repository.py) | Offline validation of document links, anchors, figures, and catalog integrity. |
 
-From the repository root, run the local check with `python tools/validate_repository.py`. This command uses Python’s standard library, makes no network requests, and does not execute any third-party quantization code.
-
+ 
 <a id="contributing"></a>
 ## Contributing
 
-Contributions should keep method descriptions tied to the cited evidence and preserve the distinction between algorithmic mechanisms and complete implementation pipelines. Corrections to the supplied survey should identify the affected section, table, or figure and provide the primary source that supports the change.
-
+ 
 | Entry field | Required information |
 | --- | --- |
 | Identity | Exact paper title, authors, year or version, and a primary publication link. |
@@ -545,7 +541,7 @@ Contributions should keep method descriptions tied to the cited evidence and pre
 | Code | An author-linked repository; distinguish the paper implementation from third-party reimplementations. |
 | Evidence | The paper section or table supporting a numerical result, plus its model, metric, and baseline. |
 
-New papers added after this edition should be marked as repository additions until they are incorporated into the manuscript. A missing link, unsupported target flag, or unreported measurement should remain explicit. Do not infer a license, acceptance status, benchmark result, or hardware claim from a repository name or a nominal bit-width.
+New papers added after this edition will be marked as repository additions until they are incorporated into the manuscript.  
 
 <a id="citation"></a>
 ## Citation
