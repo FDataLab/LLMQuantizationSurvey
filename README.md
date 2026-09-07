@@ -83,7 +83,7 @@ These families overlap. SEPTQ combines compensation and selective preservation; 
 <summary>Original taxonomy figure from the manuscript</summary>
 
 <p align="center">
-  <img src="assets/taxonomy-original.png" alt="Original four-family taxonomy from Figure 2 of the survey." width="100%">
+  <img src="assets/taxonomy.png" alt="Original four-family taxonomy from Figure 2 of the survey." width="100%">
 </p>
 
 Figure 2, page 7, is preserved as supplied. The method catalog follows the full Section 3 discussion: the original figure omits KurTail, ButterflyQuant, and SINQ and repeats PeRQ. See [source notes](docs/source-notes.md#taxonomy-coverage).
