@@ -523,7 +523,7 @@ The following systems and toolkits are cited in the survey.
 | [docs/source-inventory.md](docs/source-inventory.md) | Input coverage, missing manuscript dependencies, and figure provenance. |
 | [data/methods.json](data/methods.json) | Structured records for the 52 Section 3 methods. |
 | [data/references.json](data/references.json) | Structured records for all 108 references, including URL provenance. |
-| [CITATION.bib](CITATION.bib) | A conservative manuscript citation. |
+| [citation.bib](citation.bib) | A conservative manuscript citation. |
 | [tools/validate_repository.py](tools/validate_repository.py) | Offline validation of document links, anchors, figures, and catalog integrity. |
 
  
