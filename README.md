@@ -508,24 +508,7 @@ The following systems and toolkits are cited in the survey.
 | [Efficient Deep Learning: A Survey on Making Deep Learning Models Smaller, Faster, and Better](https://dl.acm.org/doi/10.1145/3578938) · [55](assets/references.md#ref-55) | 2023 | Efficient deep-learning background. |
 | [Benchmarking post-training quantization in llms: Comprehensive taxonomy, unified evaluation, and comparative analysis](https://arxiv.org/abs/2502.13178) · [104](assets/references.md#ref-104) | 2025 | Four-family taxonomy and comparative quantization evaluation. |
 
-<a id="repository-files"></a>
-## Repository files
-
-| Path | Contents |
-| --- | --- |
-| [README.md](README.md) | The survey companion and categorized literature catalog. |
-| [assets/survey.pdf](assets/survey.pdf) | The supplied 35-page manuscript, unchanged. |
-| [paper/main.tex](paper/main.tex) | The supplied main LaTeX file, unchanged; its external inputs were not supplied. |
-| [assets/](assets/) | Eight figures extracted from the supplied PDF. |
-| [assets/references.md](assets/references.md) | All 108 bibliography entries, source citation keys where recoverable, and primary links. |
-| [docs/reported-results.md](docs/reported-results.md) | Selected results with their stated model and precision settings. |
-| [docs/source-notes.md](docs/source-notes.md) | Mathematical, terminology, scope, and publication issues for author review. |
-| [docs/source-inventory.md](docs/source-inventory.md) | Input coverage, missing manuscript dependencies, and figure provenance. |
-| [data/methods.json](data/methods.json) | Structured records for the 52 Section 3 methods. |
-| [data/references.json](data/references.json) | Structured records for all 108 references, including URL provenance. |
-| [citation.bib](citation.bib) | A conservative manuscript citation. |
-| [tools/validate_repository.py](tools/validate_repository.py) | Offline validation of document links, anchors, figures, and catalog integrity. |
-
+ 
  
 <a id="contributing"></a>
 ## Contributing
