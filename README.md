@@ -52,7 +52,7 @@ Method descriptions and publication labels follow the supplied survey. External 
 <a id="background"></a>
 ## Background
 
-Post-training quantization converts a pretrained model to lower-precision representations after training. The survey treats the resulting approximation error as the common object across methods. For a linear layer with row-stacked inputs, $Y=XW$. If $\widetilde W$ denotes the dequantized low-bit weights, the weight error is $E=W-\widetilde W$ and the induced projection error is $\Delta Y=XE$. The input activations determine how a weight perturbation affects the output. See [Section 2](paper/survey.pdf#page=3).
+Post-training quantization converts a pretrained model to lower-precision representations after training. The survey treats the resulting approximation error as the common object across methods. For a linear layer with row-stacked inputs, $Y=XW$. If $\widetilde W$ denotes the dequantized low-bit weights, the weight error is $E=W-\widetilde W$ and the induced projection error is $\Delta Y=XE$. The input activations determine how a weight perturbation affects the output. See [Section 2](assets/survey.pdf#page=3).
 
 The shorthand W4A8 denotes 4-bit weights and 8-bit activations. It does not specify the KV-cache precision, quantization groups, codebook storage, retained high-precision components, or compute format of every operation. Those details are needed to compare methods with the same nominal precision.
 
@@ -65,7 +65,7 @@ The shorthand W4A8 denotes 4-bit weights and 8-bit activations. It does not spec
 | Inference phase | Prefill and autoregressive decoding. | Prefill processes the prompt and builds the cache. Decode repeatedly uses cached states while producing new tokens. |
 | Storage and execution | Packed values, scales, zero-points, indices, codebooks, correction matrices, and online transforms. | A compact representation must be evaluated together with the operations needed to execute it. |
 
-Uniform quantization shares a fixed step between adjacent reconstruction values. Non-uniform quantization uses unevenly spaced reconstruction values; vector quantization extends the representation to groups of weights. The survey’s distinction between structured and unstructured access is also important: channel- or group-level selections can use regular layouts, while arbitrary preserved entries require location information and a suitable execution path. See [Section 2](paper/survey.pdf#page=5).
+Uniform quantization shares a fixed step between adjacent reconstruction values. Non-uniform quantization uses unevenly spaced reconstruction values; vector quantization extends the representation to groups of weights. The survey’s distinction between structured and unstructured access is also important: channel- or group-level selections can use regular layouts, while arbitrary preserved entries require location information and a suitable execution path. See [Section 2](assets/survey.pdf#page=5).
 
 <a id="methods"></a>
 ## Taxonomy of error-control mechanisms
@@ -77,7 +77,7 @@ Uniform quantization shares a fixed step between adjacent reconstruction values.
 | [Salience](#salience) | Which parts need protection from precision loss? | Activation-aware scaling, preserved columns or entries, structured bit allocation, and binary masks. | 8 |
 | [Optimization](#optimization) | Which quantizer choices best preserve the selected output? | Learned rounding, clipping, scales, block reconstruction, and equivalent transformations. | 11 |
 
-These families overlap. SEPTQ combines compensation and selective preservation; QuIP# combines rotations and codebooks; ROSAQ combines rotation and salience; several optimization methods use low-rank scaling. The family label records the survey’s organizing choice. The mechanism and deployment columns provide the additional information needed to interpret it. See [Section 3](paper/survey.pdf#page=7).
+These families overlap. SEPTQ combines compensation and selective preservation; QuIP# combines rotations and codebooks; ROSAQ combines rotation and salience; several optimization methods use low-rank scaling. The family label records the survey’s organizing choice. The mechanism and deployment columns provide the additional information needed to interpret it. See [Section 3](assets/survey.pdf#page=7).
 
  
 
@@ -94,7 +94,7 @@ Each method name links to a primary paper record. The numbered reference links t
 <a id="compensation"></a>
 ## Compensation-based methods
 
-Compensation methods preserve the behavior of a projection through error correction or reconstruction. The survey separates sequential curvature-aware updates, low-rank reconstruction, and vector-codebook reconstruction. For a low-rank correction, the effective matrix is $W_{\mathrm{rec}}=\widetilde W+A_kB_k$; both the quality of the correction and its deployed cost matter. See [Section 3.1](paper/survey.pdf#page=8).
+Compensation methods preserve the behavior of a projection through error correction or reconstruction. The survey separates sequential curvature-aware updates, low-rank reconstruction, and vector-codebook reconstruction. For a low-rank correction, the effective matrix is $W_{\mathrm{rec}}=\widetilde W+A_kB_k$; both the quality of the correction and its deployed cost matter. See [Section 3.1](assets/survey.pdf#page=8).
 
 <p align="center">
   <img src="assets/compensation.png" alt="Compensation-based methods" width="100%">
@@ -139,7 +139,7 @@ The central comparison within this family is the object being reconstructed. A g
 <a id="rotation"></a>
 ## Rotation-based methods
 
-Rotation methods change the coordinates in which quantization is performed. For an orthogonal matrix $Q$, the full-precision identity is $XW=(XQ)(Q^\top W)$. The survey studies how this transformation redistributes difficult values and how related scaling, permutation, correction, and mixed-precision operations affect the result. Some transforms can be incorporated into stored weights; others remain online. See [Section 3.2](paper/survey.pdf#page=11).
+Rotation methods change the coordinates in which quantization is performed. For an orthogonal matrix $Q$, the full-precision identity is $XW=(XQ)(Q^\top W)$. The survey studies how this transformation redistributes difficult values and how related scaling, permutation, correction, and mixed-precision operations affect the result. Some transforms can be incorporated into stored weights; others remain online. See [Section 3.2](assets/survey.pdf#page=11).
  
  
 
@@ -225,7 +225,7 @@ FrameQuant is discussed beside this family but is explicitly excluded from rotat
 <a id="salience"></a>
 ## Salience-based methods
 
-Salience methods allocate protection according to the effect of a perturbation on projection outputs or downstream behavior. The source considers activation magnitude, weight magnitude, curvature information, output reconstruction, and outlier statistics as importance signals. Protection may take the form of a scale transformation, higher-precision values, or a structured bit allocation. See [Section 3.3](paper/survey.pdf#page=15).
+Salience methods allocate protection according to the effect of a perturbation on projection outputs or downstream behavior. The source considers activation magnitude, weight magnitude, curvature information, output reconstruction, and outlier statistics as importance signals. Protection may take the form of a scale transformation, higher-precision values, or a structured bit allocation. See [Section 3.3](assets/survey.pdf#page=15).
 
 <p align="center">
   <img src="assets/salience.png" alt="Salience-based methods" width="100%">
@@ -263,7 +263,7 @@ Average bit-width depends on the precision allocation, scales, masks, and residu
 <a id="optimization"></a>
 ## Optimization-based methods
 
-Optimization methods treat rounding, clipping, scales, or transformations as quantities to estimate during quantization. The source includes calibration-driven learning and parameter-only balancing in this family. It also includes foundational pre-LLM work where that work establishes a principle used by later LLM methods. See [Section 3.4](paper/survey.pdf#page=18).
+Optimization methods treat rounding, clipping, scales, or transformations as quantities to estimate during quantization. The source includes calibration-driven learning and parameter-only balancing in this family. It also includes foundational pre-LLM work where that work establishes a principle used by later LLM methods. See [Section 3.4](assets/survey.pdf#page=18).
 
 <p align="center">
   <img src="assets/optimization.png" alt="Optimization-based methods" width="100%">
@@ -306,7 +306,7 @@ The shared idea is to alter tensor distributions while preserving the full-preci
 <a id="components"></a>
 ## Sensitivity of transformer components
 
-The survey defines component sensitivity through the degradation caused by quantizing a particular tensor or module while the remaining computation is held fixed or calibrated. This is a location-dependent question: weight perturbations, attention-score perturbations, reused cache errors, and output-logit changes do not enter the computation in the same way. See [Section 4](paper/survey.pdf#page=21).
+The survey defines component sensitivity through the degradation caused by quantizing a particular tensor or module while the remaining computation is held fixed or calibrated. This is a location-dependent question: weight perturbations, attention-score perturbations, reused cache errors, and output-logit changes do not enter the computation in the same way. See [Section 4](assets/survey.pdf#page=21).
 
 <p align="center">
   <img src="assets/sensitivity.png" alt="Figure 7: sensitive points in attention projections, cache states, MLP projections, normalization, residual paths, and vocabulary logits." width="100%">
@@ -328,7 +328,7 @@ The cache asymmetry is developed in [KIVI](https://proceedings.mlr.press/v235/li
 <a id="calibration"></a>
 ## Calibration strategies
 
-Calibration estimates the information and parameters needed by a quantizer for a fixed pretrained model. The survey connects this step to range estimation, channel importance, reconstruction error, and transformation selection. The full-precision model can supply layer or block targets on unlabeled inputs. See [Section 5](paper/survey.pdf#page=24).
+Calibration estimates the information and parameters needed by a quantizer for a fixed pretrained model. The survey connects this step to range estimation, channel importance, reconstruction error, and transformation selection. The full-precision model can supply layer or block targets on unlabeled inputs. See [Section 5](assets/survey.pdf#page=24).
 
 | Strategy | Information and objective | Source examples or discussion | Main issue to report |
 | --- | --- | --- | --- |
@@ -341,11 +341,11 @@ Calibration estimates the information and parameters needed by a quantizer for a
 | Calibration-data selection | Examples chosen to cover the intended prompt structure and sequence lengths. | Section 5.5. | Data source, sample count, token length, selection procedure, and separation from evaluation. |
 | Parameter-only fitting | Pretrained weights and analytical or optimization-based statistics. | EasyQuant [79](assets/references.md#ref-79); AdpQ [24](assets/references.md#ref-24); SINQ [59](assets/references.md#ref-59); OptRot [23](assets/references.md#ref-23). | Assumptions that substitute for observed deployment activations. |
 
-For a linear layer, reconstruction can compare $XW$ and $X\widetilde W$. A transformer-block objective compares the outputs of the composed block on the same inputs. These scopes have different calibration costs and preserve different aspects of behavior; neither should be described simply as “MSE calibration” without naming the quantity being matched. See [Section 5.3](paper/survey.pdf#page=25).
+For a linear layer, reconstruction can compare $XW$ and $X\widetilde W$. A transformer-block objective compares the outputs of the composed block on the same inputs. These scopes have different calibration costs and preserve different aspects of behavior; neither should be described simply as “MSE calibration” without naming the quantity being matched. See [Section 5.3](assets/survey.pdf#page=25).
 
 ### Calibration data and information source
 
-The survey warns that short generic text can fail to represent long prompts, dialogue, code, mathematics, or reasoning-heavy use cases. Calibration data should be described separately from the held-out data used to evaluate the quantized model. A larger sample count does not by itself demonstrate that the relevant activation patterns were covered. See [Sections 5.5–5.6](paper/survey.pdf#page=26).
+The survey warns that short generic text can fail to represent long prompts, dialogue, code, mathematics, or reasoning-heavy use cases. Calibration data should be described separately from the held-out data used to evaluate the quantized model. A larger sample count does not by itself demonstrate that the relevant activation patterns were covered. See [Sections 5.5–5.6](assets/survey.pdf#page=26).
 
 The supplied Table 6 and Section 5.6 use “zero-shot” differently. This README therefore names the information source explicitly: real unlabeled text, model-generated sequences, or parameter-only statistics. This is an editorial reporting convention; it does not settle the manuscript’s inconsistent terminology. The original wording and proposed revision are in the [source notes](docs/source-notes.md#calibration-terminology).
 
@@ -359,7 +359,7 @@ The supplied Table 6 and Section 5.6 use “zero-shot” differently. This READM
 <a id="research-directions"></a>
 ## Research challenges and future directions
 
-Section 6 organizes open questions around the interaction between the quantization algorithm, numeric format, kernel, and hardware. Its five clusters also include architecture-specific sensitivity, long-horizon inference, and reliability. The following sections preserve that organization; they summarize the supplied manuscript’s research agenda and do not claim an exhaustive current-state survey. See [Section 6](paper/survey.pdf#page=27).
+Section 6 organizes open questions around the interaction between the quantization algorithm, numeric format, kernel, and hardware. Its five clusters also include architecture-specific sensitivity, long-horizon inference, and reliability. The following sections preserve that organization; they summarize the supplied manuscript’s research agenda and do not claim an exhaustive current-state survey. See [Section 6](assets/survey.pdf#page=27).
 
 <p align="center">
   <img src="assets/sec6_overview.png" alt="Figure 8: algorithm, numeric format, kernel, and hardware, with five research directions around the stack." width="100%">
@@ -480,7 +480,7 @@ The following reporting fields turn the distinctions in Sections 2–6 into an e
 | Runtime | Separate prefill and decode measurements, throughput or latency, and the exact baseline. |
 | Energy and reporting | Energy per token where measured, measurement scope, and enough configuration information to reproduce the comparison. |
 
-WikiText-2, C4, and Penn Treebank occur in the manuscript’s perplexity examples. A result on one corpus does not establish preservation of long-context, reasoning, or safety behavior. Likewise, a nominal weight precision does not establish a complete storage budget or an on-device speedup. See [Sections 6.4–6.5](paper/survey.pdf#page=29).
+WikiText-2, C4, and Penn Treebank occur in the manuscript’s perplexity examples. A result on one corpus does not establish preservation of long-context, reasoning, or safety behavior. Likewise, a nominal weight precision does not establish a complete storage budget or an on-device speedup. See [Sections 6.4–6.5](assets/survey.pdf#page=29).
 
 <a id="implementations"></a>
 ## Libraries and implementations
@@ -518,7 +518,7 @@ This companion has no model installation or inference command because no executa
 | Path | Contents |
 | --- | --- |
 | [README.md](README.md) | The survey companion and categorized literature catalog. |
-| [paper/survey.pdf](assets/survey.pdf) | The supplied 35-page manuscript, unchanged. |
+| [assets/survey.pdf](assets/survey.pdf) | The supplied 35-page manuscript, unchanged. |
 | [paper/main.tex](paper/main.tex) | The supplied main LaTeX file, unchanged; its external inputs were not supplied. |
 | [assets/](assets/) | Eight figures extracted from the supplied PDF. |
 | [assets/references.md](assets/references.md) | All 108 bibliography entries, source citation keys where recoverable, and primary links. |
