@@ -79,8 +79,7 @@ Uniform quantization shares a fixed step between adjacent reconstruction values.
 
 These families overlap. SEPTQ combines compensation and selective preservation; QuIP# combines rotations and codebooks; ROSAQ combines rotation and salience; several optimization methods use low-rank scaling. The family label records the survey’s organizing choice. The mechanism and deployment columns provide the additional information needed to interpret it. See [Section 3](paper/survey.pdf#page=7).
 
-<details>
-<summary>Original taxonomy figure from the manuscript</summary>
+ 
 
 <p align="center">
   <img src="assets/taxonomy.png" alt="Original four-family taxonomy from Figure 2 of the survey." width="100%">
@@ -88,7 +87,7 @@ These families overlap. SEPTQ combines compensation and selective preservation; 
 
 Figure 2, page 7, is preserved as supplied. The method catalog follows the full Section 3 discussion: the original figure omits KurTail, ButterflyQuant, and SINQ and repeats PeRQ. See [source notes](docs/source-notes.md#taxonomy-coverage).
 
-</details>
+ 
 
 Each method name links to a primary paper record. The numbered reference links to its complete citation in this repository. Years and venues are taken from the supplied bibliography and may differ from the first arXiv posting date. “Author code” is shown where an author-linked project was identified; its absence means no such link was included in this preparation. The deployment column summarizes costs and reporting considerations discussed in the survey, not results from an implementation audit.
 
