@@ -13,7 +13,7 @@ This repository accompanies the survey and organizes its literature around one q
 The four method families are compensation, rotation, salience, and optimization. The survey adopts this taxonomy from Zhao et al. [104](docs/references.md#ref-104) and assigns hybrid methods by their primary error-control mechanism. This repository preserves those assignments and records important secondary mechanisms in each entry.
 
 <p align="center">
-  <img src="assets/inference-pipeline.png" alt="The survey’s inference pipeline: input embeddings, transformer blocks, cached keys and values, vocabulary logits, and next-token selection." width="100%">
+  <img src="assets/schema.png" alt="The survey’s inference pipeline: input embeddings, transformer blocks, cached keys and values, vocabulary logits, and next-token selection." width="100%">
 </p>
 
 Figure 1 from the manuscript, page 4. Weights, runtime activations, and cached keys and values are separate quantization targets; their memory costs and error paths differ.
