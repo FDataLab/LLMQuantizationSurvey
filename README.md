@@ -97,7 +97,7 @@ Each method name links to a primary paper record. The numbered reference links t
 Compensation methods preserve the behavior of a projection through error correction or reconstruction. The survey separates sequential curvature-aware updates, low-rank reconstruction, and vector-codebook reconstruction. For a low-rank correction, the effective matrix is $W_{\mathrm{rec}}=\widetilde W+A_kB_k$; both the quality of the correction and its deployed cost matter. See [Section 3.1](paper/survey.pdf#page=8).
 
 <p align="center">
-  <img src="assets/compensation-methods.png" alt="Compensation-based methods" width="100%">
+  <img src="assets/compensation.png" alt="Compensation-based methods" width="100%">
 </p>
 
 Figure 3, page 7: Hessian-aware minimization, low-rank error reconstruction, and vector-codebook reconstruction.
@@ -140,17 +140,16 @@ The central comparison within this family is the object being reconstructed. A g
 ## Rotation-based methods
 
 Rotation methods change the coordinates in which quantization is performed. For an orthogonal matrix $Q$, the full-precision identity is $XW=(XQ)(Q^\top W)$. The survey studies how this transformation redistributes difficult values and how related scaling, permutation, correction, and mixed-precision operations affect the result. Some transforms can be incorporated into stored weights; others remain online. See [Section 3.2](paper/survey.pdf#page=11).
-
-<details>
-<summary>Original rotation illustration from the manuscript</summary>
+ 
+ 
 
 <p align="center">
-  <img src="assets/rotation-methods-original.png" alt="Rotation-based methods" width="100%">
+  <img src="assets/rotation.png" alt="Rotation-based methods" width="100%">
 </p>
 
 Figure 4, page 12, is reproduced without alteration. Its transform hierarchy and several labels need mathematical revision; the [source notes](docs/source-notes.md#rotation-mathematics) explain the issues. The catalog does not rely on the diagram’s claimed set inclusions.
 
-</details>
+ 
 
 ### Incoherence-based rotations
 
@@ -229,7 +228,7 @@ FrameQuant is discussed beside this family but is explicitly excluded from rotat
 Salience methods allocate protection according to the effect of a perturbation on projection outputs or downstream behavior. The source considers activation magnitude, weight magnitude, curvature information, output reconstruction, and outlier statistics as importance signals. Protection may take the form of a scale transformation, higher-precision values, or a structured bit allocation. See [Section 3.3](paper/survey.pdf#page=15).
 
 <p align="center">
-  <img src="assets/salience-methods.png" alt="Salience-based methods" width="100%">
+  <img src="assets/salience.png" alt="Salience-based methods" width="100%">
 </p>
 
 Figure 5, page 16: activation-aware scaling, selective higher-precision preservation, and salience-weighted bit allocation.
@@ -267,7 +266,7 @@ Average bit-width depends on the precision allocation, scales, masks, and residu
 Optimization methods treat rounding, clipping, scales, or transformations as quantities to estimate during quantization. The source includes calibration-driven learning and parameter-only balancing in this family. It also includes foundational pre-LLM work where that work establishes a principle used by later LLM methods. See [Section 3.4](paper/survey.pdf#page=18).
 
 <p align="center">
-  <img src="assets/optimization-methods-original.png" alt="Optimization-based methods" width="100%">
+  <img src="assets/optimization.png" alt="Optimization-based methods" width="100%">
 </p>
 
 Figure 6, page 18: rounding and clipping, block-wise differentiable calibration, and equivalent transformations. The [source notes](docs/source-notes.md#figure-notation) record notation issues in the original illustration.
@@ -310,7 +309,7 @@ The shared idea is to alter tensor distributions while preserving the full-preci
 The survey defines component sensitivity through the degradation caused by quantizing a particular tensor or module while the remaining computation is held fixed or calibrated. This is a location-dependent question: weight perturbations, attention-score perturbations, reused cache errors, and output-logit changes do not enter the computation in the same way. See [Section 4](paper/survey.pdf#page=21).
 
 <p align="center">
-  <img src="assets/component-sensitivity.png" alt="Figure 7: sensitive points in attention projections, cache states, MLP projections, normalization, residual paths, and vocabulary logits." width="100%">
+  <img src="assets/sensitivity.png" alt="Figure 7: sensitive points in attention projections, cache states, MLP projections, normalization, residual paths, and vocabulary logits." width="100%">
 </p>
 
 Figure 7, page 22. The numbered sites distinguish outliers after normalization, query/key score changes, reused cache error, MLP inputs and outputs, and vocabulary-logit distortion.
@@ -363,7 +362,7 @@ The supplied Table 6 and Section 5.6 use “zero-shot” differently. This READM
 Section 6 organizes open questions around the interaction between the quantization algorithm, numeric format, kernel, and hardware. Its five clusters also include architecture-specific sensitivity, long-horizon inference, and reliability. The following sections preserve that organization; they summarize the supplied manuscript’s research agenda and do not claim an exhaustive current-state survey. See [Section 6](paper/survey.pdf#page=27).
 
 <p align="center">
-  <img src="assets/research-directions.png" alt="Figure 8: algorithm, numeric format, kernel, and hardware, with five research directions around the stack." width="100%">
+  <img src="assets/sec6_overview.png" alt="Figure 8: algorithm, numeric format, kernel, and hardware, with five research directions around the stack." width="100%">
 </p>
 
 Figure 8, page 27. The format, algorithm, kernel, and hardware need compatible choices; reliability and evaluation apply across the stack.
@@ -466,7 +465,7 @@ The survey draws evidence from studies with different models, quantized tensors,
 
 ### What an interpretable comparison should report
 
-The following reporting fields turn the distinctions in Sections 2–6 into an experiment record. They are a companion template, not a claim that every cited paper reports every field. Unreported information should remain marked as such.
+The following reporting fields turn the distinctions in Sections 2–6 into an experiment record.
 
 | Field | Information to record |
 | --- | --- |
@@ -486,8 +485,7 @@ WikiText-2, C4, and Penn Treebank occur in the manuscript’s perplexity example
 <a id="implementations"></a>
 ## Libraries and implementations
 
-The method tables link author implementations where a project was identified. The following systems and toolkits are explicitly cited in the survey. Their inclusion records their role in the literature; it does not imply a shared installation environment, compatible checkpoints, or tested support for every method.
-
+The following systems and toolkits are explicitly cited in the survey. 
 | Resource | Project | Role in the source |
 | --- | --- | --- |
 | Marlin [21](docs/references.md#ref-21) | [IST-DASLab/marlin](https://github.com/IST-DASLab/marlin) | Kernel-level support for low-bit weight inference. |
@@ -501,7 +499,7 @@ This companion has no model installation or inference command because no executa
 <a id="related-surveys"></a>
 ## Related surveys and background
 
-These works appear in the supplied bibliography and establish the survey’s context. Their inclusion does not reproduce the coverage scores in Table 1, which would require a separate comparison of the full articles.
+ 
 
 | Paper or resource | Year in survey | Role in the survey |
 | --- | --- | --- |
@@ -520,7 +518,7 @@ These works appear in the supplied bibliography and establish the survey’s con
 | Path | Contents |
 | --- | --- |
 | [README.md](README.md) | The survey companion and categorized literature catalog. |
-| [paper/survey.pdf](paper/survey.pdf) | The supplied 35-page manuscript, unchanged. |
+| [paper/survey.pdf](assets/survey.pdf) | The supplied 35-page manuscript, unchanged. |
 | [paper/main.tex](paper/main.tex) | The supplied main LaTeX file, unchanged; its external inputs were not supplied. |
 | [assets/](assets/) | Eight figures extracted from the supplied PDF. |
 | [docs/references.md](docs/references.md) | All 108 bibliography entries, source citation keys where recoverable, and primary links. |
@@ -554,8 +552,7 @@ New papers added after this edition should be marked as repository additions unt
 <a id="citation"></a>
 ## Citation
 
-Cite the survey using the manuscript record below until the authors provide confirmed publication metadata. The supplied source contains placeholder journal fields and a placeholder DOI, so neither appears in this entry.
-
+ 
 ```bibtex
 @misc{rababah2026posttrainingquantization,
   title  = {Post-Training Quantization for Large Language Models: A Survey},
@@ -565,11 +562,13 @@ Cite the survey using the manuscript record below until the authors provide conf
 }
 ```
 
-The method catalog links the original papers so that implementations and method-specific results can be cited directly. The full reference index preserves the manuscript’s own LaTeX keys where they are recoverable from the supplied main file.
-
+ 
 <a id="license"></a>
 ## License and source status
 
-A repository license was not supplied. This prepared companion therefore does not declare an MIT, Creative Commons, or other license on the authors’ behalf, and it does not announce journal acceptance. The PDF’s existing notices remain unchanged; third-party papers, code, and assets remain subject to their own terms.
+This repository is licensed under the Creative Commons Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0).
 
-The main LaTeX file references bibliography, table, and figure files that were not included. The PDF provides the compiled content used for this companion, but the available source is not a complete manuscript build. Publication links, the final repository address, licensing, and the issues in [source notes](docs/source-notes.md) remain author decisions.
+You may share and adapt the material for any purpose, provided that appropriate credit is given and derivative works are distributed under the same license.
+
+Third-party papers, code, and assets remain subject to their own licenses and terms. The PDF’s existing notices remain unchanged, and this repository does not make any claim regarding journal acceptance or publication status.
+ 
