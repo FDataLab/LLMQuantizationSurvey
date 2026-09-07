@@ -25,8 +25,6 @@ Figure 1 from the manuscript, page 4. Weights, runtime activations, and cached k
 | --- | --- |
 | 6 September 2026 | Companion prepared from the supplied 35-page manuscript and main LaTeX source. Includes 52 method entries, 108 references, eight extracted figures, structured metadata, and source notes. |
 
-Method descriptions and publication labels follow the supplied survey. External links provide access to primary paper records and author projects; link matching does not independently verify every reported result or establish current implementation support. This is a literature companion, and the package contains no new quantization implementation or reproduced benchmark. The [source notes](docs/source-notes.md) identify inconsistencies that should be resolved before a public release.
-
 <a id="contents"></a>
 ## Contents
 
@@ -141,7 +139,7 @@ The central comparison within this family is the object being reconstructed. A g
 
 Rotation methods change the coordinates in which quantization is performed. For an orthogonal matrix $Q$, the full-precision identity is $XW=(XQ)(Q^\top W)$. The survey studies how this transformation redistributes difficult values and how related scaling, permutation, correction, and mixed-precision operations affect the result. Some transforms can be incorporated into stored weights; others remain online. See [Section 3.2](assets/survey.pdf#page=11).
  
- 
+
 
 <p align="center">
   <img src="assets/rotation.png" alt="Rotation-based methods" width="100%">
