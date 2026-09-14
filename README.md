@@ -460,25 +460,7 @@ The survey draws evidence from studies with different models, quantized tensors,
 | [Can Compressed LLMs Truly Act? An Empirical Evaluation of Agentic Capabilities in LLM Compression](https://arxiv.org/abs/2505.19433) · [16](assets/references.md#ref-16) | 2025 | Agentic evaluation under compression. |
 | [Accuracy is Not Enough: A Divergence-Based Approach to Evaluate Fidelity Loss in Quantized LLMs](assets/references.md#ref-67) · [67](assets/references.md#ref-67) | 2026 | Fidelity beyond task accuracy. |
 
-### What an interpretable comparison should report
-
-The following reporting fields turn the distinctions in Sections 2–6 into an experiment record.
-
-| Field | Information to record |
-| --- | --- |
-| Model | Exact checkpoint, size, model family, instruction or reasoning variant, and tokenizer. |
-| Quantized scope | Weights, activations, keys, values, and all retained higher-precision components. |
-| Numerical representation | Stored bit-widths, number format, grouping, scales, zero-points, codebooks, masks, residual terms, and effective storage. |
-| Calibration | Dataset or information source, sample count, sequence length, selection rule, reconstruction scope, optimized parameters, and time. |
-| Adaptation | Fine-tuning, codebook tuning, adapters, weak-column tuning, or test-time updates enabled in the reported pipeline. |
-| Quality | Perplexity or task accuracy together with workload-specific reasoning, long-context, agentic, factuality, safety, or fidelity measurements. |
-| Generation | Prompt lengths, output lengths, decoding settings, and cache policy used for the quality measurements. |
-| System configuration | Named device, backend, numerical kernel, batch size, memory use, and whether transforms or corrections execute online. |
-| Runtime | Separate prefill and decode measurements, throughput or latency, and the exact baseline. |
-| Energy and reporting | Energy per token where measured, measurement scope, and enough configuration information to reproduce the comparison. |
-
-WikiText-2, C4, and Penn Treebank occur in the manuscript’s perplexity examples. A result on one corpus does not establish preservation of long-context, reasoning, or safety behavior. Likewise, a nominal weight precision does not establish a complete storage budget or an on-device speedup. See [Sections 6.4–6.5](assets/survey.pdf#page=29).
-
+ 
 <a id="implementations"></a>
 ## Libraries and implementations
 
