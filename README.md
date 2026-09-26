@@ -13,7 +13,7 @@ This repository accompanies the survey and organizes its literature around one q
 The four method families are compensation, rotation, salience, and optimization. The survey adopts this taxonomy from Zhao et al. [104](assets/references.md#ref-104) and assigns hybrid methods by their primary error-control mechanism. This repository preserves those assignments and records important secondary mechanisms in each entry.
 
 <p align="center">
-  <img src="assets/taxonomy.png" alt="The survey’s categorization." width="100%">
+  <img src="assets/taxonom2y.png" alt="The survey’s categorization." width="100%">
 </p>
 
  
