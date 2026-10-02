@@ -2,7 +2,7 @@
 
 Methods, component sensitivity, calibration, and deployment
 
-[Manuscript](assets/survey.pdf) · [Method catalog](#methods) · [Full bibliography](assets/references.md) · [Citation](#citation)
+[PDF](assets/survey.pdf) · [SSRN](https://ssrn.com/abstract=7518402) · [DOI](https://doi.org/10.2139/ssrn.7518402) · [Method catalog](#methods) · [Full bibliography](assets/references.md) · [Citation](#citation)
 
 [Baha Rababah](mailto:rababahb@myumanitoba.ca), [Yuzhang Shang](mailto:yuzhang.shang@ucf.edu), [Carson K. Leung](mailto:carson.leung@umanitoba.ca), [Cuneyt G. Akcora](mailto:cuneyt.akcora@ucf.edu), and [Mubarak Shah](mailto:mubarak.shah@ucf.edu)
 
@@ -44,7 +44,7 @@ The four method families are compensation, rotation, salience, and optimization.
 | [Related surveys](#related-surveys) | Background and neighboring surveys from the bibliography. |
 | [Repository files](#repository-files) | Documents, figures, structured indexes, and validation tools. |
 | [Contributing](#contributing) | Entry requirements and evidence rules. |
-| [Citation](#citation) | Manuscript citation without unconfirmed publication metadata. |
+| [Citation](#citation) | SSRN citation and DOI. |
 | [License and source status](#license) | Author decisions still required for publication and reuse. |
 
 <a id="background"></a>
@@ -517,7 +517,9 @@ New papers added after this edition will be marked as repository additions until
   title  = {Post-Training Quantization for Large Language Models: A Survey},
   author = {Baha Rababah and Yuzhang Shang and Carson K. Leung and Cuneyt G. Akcora and Mubarak Shah},
   year   = {2026},
-  note   = {Manuscript}
+  doi    = {10.2139/ssrn.7518402},
+  url    = {https://ssrn.com/abstract=7518402},
+  note   = {SSRN preprint, posted September 26, 2026}
 }
 ```
 
@@ -529,5 +531,5 @@ This repository is licensed under the Creative Commons Attribution-ShareAlike 4.
 
 You may share and adapt the material for any purpose, provided that appropriate credit is given and derivative works are distributed under the same license.
 
-Third-party papers, code, and assets remain subject to their own licenses and terms. The PDF’s existing notices remain unchanged, and this repository does not make any claim regarding journal acceptance or publication status.
+Third-party papers, code, and assets remain subject to their own licenses and terms. The PDF’s existing notices remain unchanged, and this repository does not make any claim regarding journal acceptance.
  
